@@ -1,3 +1,11 @@
+# PROJECT UPDATE: Movie Recommendation App v3
+
+Program now has an additional webpage that will present user with a prize for answering 3 questions. Should be able to run the program with the same instructions from v2.
+
+- NOTE:
+in v2 I instructed you to go to http://localhost:8080/index.html if the program did not automatically open your web browser, now just go to http://localhost:8080 if this happens. (I had to remove /index.html because reacts router wasnt working with it).
+
+
 # PROJECT UPDATE: Movie Recommendation App v2
 
 Program will now generate a webpage that will recommend a random movie, upon finding a movie that sounds interesting to you the website allows users
