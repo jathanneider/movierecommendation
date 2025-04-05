@@ -1,0 +1,20 @@
+plugins {
+    id 'com.github.node-gradle.node' version '7.0.2'
+}
+apply plugin: 'base'
+
+node {
+    download = true
+    version = '18.17.1'
+    npmVersion = '9.8.1'
+    workDir = file("${project.buildDir}/nodejs")
+    npmWorkDir = file("${project.buildDir}/npm")
+}
+
+task npmBuild(type: NpmTask) {
+    args = ['run', 'build']
+}
+
+tasks.named('build') {
+    dependsOn(npmBuild)
+}

@@ -4,6 +4,9 @@ plugins {
 	id 'io.spring.dependency-management' version '1.1.7'
 }
 
+// Ensure frontend subproject is included
+evaluationDependsOn(':movie-recommendation-frontend')
+
 import java.awt.Desktop
 
 group = 'com.example'
@@ -35,7 +38,7 @@ tasks.register('runGUI', JavaExec) {
 
 bootRun.doFirst {
 	try {
-		def url = new URI("http://localhost:8080/index.html")
+		def url = new URI("http://localhost:8080/")
 		if (Desktop.isDesktopSupported()) {
 			Thread.start {
 				// Small delay to ensure server is up before browser tries to open
@@ -52,4 +55,15 @@ bootRun.doFirst {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+bootJar {
+	dependsOn(':movie-recommendation-frontend:build')
+
+	doFirst {
+		copy {
+			from project(':movie-recommendation-frontend').file('build')
+			into "$projectDir/src/main/resources/static"
+		}
+	}
 }

@@ -40,7 +40,6 @@ public class DatabaseInitializer {
 
         try (Connection connection = DriverManager.getConnection(baseUrl + "postgres", databaseUsername, databasePassword);
              Statement statement = connection.createStatement()) {
-
             String checkDatabaseQuery = "SELECT 1 FROM pg_database WHERE datname = '" + databaseName + "'";
             boolean databaseExists = statement.executeQuery(checkDatabaseQuery).next();
 

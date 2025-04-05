@@ -4,6 +4,7 @@ import axios from "axios";
 import confetti from "canvas-confetti";
 import * as htmlToImage from "html-to-image";
 import download from "downloadjs";
+import { Link } from "react-router-dom";
 
 // API
 const API_URL = "http://localhost:8080/movies/random";
@@ -136,6 +137,7 @@ const DownloadButton = styled(Button)`
     margin-top: 10px;
 `;
 
+
 const MovieRecommendation = () => {
     const [movie, setMovie] = useState(null);
     const [error, setError] = useState("");
@@ -196,6 +198,9 @@ const MovieRecommendation = () => {
                     </TicketWrapper>
 
                     <DownloadButton onClick={downloadTicket}>Download Ticket</DownloadButton>
+                    <Link to="/prize" style={{ color: "#ffcc00", marginTop: "20px" }}>
+                        Want a prize? Click here!
+                    </Link>
                 </>
             )}
         </PageWrapper>

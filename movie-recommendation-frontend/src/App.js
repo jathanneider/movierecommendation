@@ -1,14 +1,17 @@
 import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MovieRecommendation from "./components/MovieRecommendation";
-import MovieList from "./components/MovieList";
+import PrizePage from "./components/PrizePage";
 
-const App = () => {
-  return (
-      <div>
-        <MovieRecommendation />
-        <MovieList />
-      </div>
-  );
-};
+function App() {
+    return (
+        <Router>
+            <Routes>
+                <Route path="/" element={<MovieRecommendation />} />
+                <Route path="/prize" element={<PrizePage />} />
+            </Routes>
+        </Router>
+    );
+}
 
 export default App;
